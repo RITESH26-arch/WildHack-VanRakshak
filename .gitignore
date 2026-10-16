@@ -1,0 +1,11 @@
+.env
+__pycache__/
+*.py[cod]
+*.pt
+*.db
+static/evidence/*
+!static/evidence/.gitkeep
+videos/*
+!videos/.gitkeep
+.venv/
+venv/
