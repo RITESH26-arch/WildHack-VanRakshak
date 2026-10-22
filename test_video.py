@@ -19,7 +19,6 @@ def main():
     if not config.DEMO_MODE:
         raise SystemExit("This backup build is demo-only. Set DEMO_MODE=true for synthetic coordinates.")
     source = config.VIDEO_SOURCE
-    # Accept webcam index if configured as a numeric string; otherwise a file/stream URL.
     cap = cv2.VideoCapture(int(source) if source.isdigit() else source)
     if not cap.isOpened():
         raise SystemExit(f"Could not open VIDEO_SOURCE={source!r}. Check the path or stream URL.")
@@ -52,7 +51,6 @@ def main():
                         (x1, max(20, y1 - 8)), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 200, 255), 2)
 
         now = time.time()
-        # If a patrol/ranger exception is configured for this camera, suppress notifications.
         exempt = camera_id in config.RANGER_EXEMPT_CAMERA_IDS
         sent_this_frame = set()
         for d in confirmed:

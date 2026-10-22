@@ -13,7 +13,6 @@ class ThreatDetector:
         self.recent = deque(maxlen=max(config.PERSISTENCE_WINDOW, 1))
 
     def infer(self, frame):
-        # CLAHE helps local contrast on some dark footage; retain original if conversion fails.
         try:
             lab = cv2.cvtColor(frame, cv2.COLOR_BGR2LAB)
             l, a, b = cv2.split(lab)

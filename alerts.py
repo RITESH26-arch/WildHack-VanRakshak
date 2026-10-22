@@ -29,5 +29,4 @@ def send_telegram_alert(message, image_path=None):
             return False, "Telegram API returned ok=false"
         return True, "sent"
     except (requests.RequestException, ValueError, OSError) as exc:
-        # Avoid printing token-bearing URL or secrets.
         return False, f"Telegram send failed: {type(exc).__name__}"
